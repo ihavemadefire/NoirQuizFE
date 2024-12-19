@@ -1,0 +1,45 @@
+.swordfish-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: white;
+  }
+  
+  .swordfish-container h1 {
+    font-size: 5rem;
+    color: black;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: white;
+  }
+  
+  .home-container h1 {
+    font-size: 5rem;
+    color: black;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  
+  .home-container a, .home-container button {
+    font-size: 1.5rem;
+    margin: 10px;
+    text-decoration: none;
+    color: blue;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  
+  .home-container button {
+    color: red;
+  }

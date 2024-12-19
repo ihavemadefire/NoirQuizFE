@@ -7,9 +7,19 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState('');
+  const [error, setError] = useState(''); // Add the error state here
 
   const handleRegister = async (e) => {
     e.preventDefault();
+
+    // Client-side validation
+    if (password !== confirmPassword) {
+      setError("Passwords do not match."); // Set the error message
+      return; // Prevent form submission
+    }
+
+    setError(''); // Clear any previous error message
+
     try {
       const response = await axios.post('http://127.0.0.1:8000/api/v1/users/signup/', {
         email,
@@ -55,6 +65,7 @@ const Register = () => {
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
         />
+        {error && <p style={{ color: 'red' }}>{error}</p>} {/* Display error if it exists */}
         <button type="submit">Register</button>
       </form>
       <p>{message}</p>

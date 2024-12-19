@@ -9,7 +9,8 @@ const Logout = () => {
           Authorization: `Token ${localStorage.getItem('token')}`,
         },
       });
-      localStorage.removeItem('token'); // Clear token
+      localStorage.removeItem('access');
+      localStorage.removeItem('refresh');
       alert('You have logged out successfully.');
     } catch (error) {
       alert('Logout failed.');
