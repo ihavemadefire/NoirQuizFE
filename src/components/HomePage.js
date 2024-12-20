@@ -1,33 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './HomePage.css';
 
-const HomePage = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  useEffect(() => {
-    // Check for access token to determine login state
-    const token = localStorage.getItem('access');
-    setIsLoggedIn(!!token);
-  }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem('access');
-    localStorage.removeItem('refresh');
-    setIsLoggedIn(false);
-  };
-
+const HomePage = ({ isLoggedIn, handleLogout }) => {
   return (
     <div className="home-container">
-      {isLoggedIn ? (
+      {!isLoggedIn ? (
         <div>
-          <h1>Swordfish</h1>
-          <button onClick={handleLogout}>Log Out</button>
+          <h1>Welcome to the Film Noir Quiz!</h1>
+          <Link to="/login">
+            <button>Log In</button>
+          </Link>
+          <Link to="/register">
+            <button>Register</button>
+          </Link>
         </div>
       ) : (
         <div>
-          <Link to="/login">Log In</Link>
-          <Link to="/register">Register</Link>
+          <h1>Welcome Back!</h1>
+          <Link to="/quiz">
+            <button>Take the Quiz</button>
+          </Link>
+          <button onClick={handleLogout}>Log Out</button>
         </div>
       )}
     </div>
